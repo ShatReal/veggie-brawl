@@ -1,0 +1,61 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://scenes/main.gd" type="Script" id=2]
+[ext_resource path="res://theme/theme.tres" type="Theme" id=3]
+
+[node name="Main" type="Node"]
+script = ExtResource( 2 )
+
+[node name="UI" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 3 )
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 1260.0
+margin_bottom = 700.0
+custom_constants/separation = 20
+alignment = 1
+
+[node name="Logo" type="TextureRect" parent="UI/VBoxContainer"]
+margin_top = 191.0
+margin_right = 1240.0
+margin_bottom = 255.0
+texture = ExtResource( 1 )
+stretch_mode = 4
+
+[node name="Play" type="Button" parent="UI/VBoxContainer"]
+margin_left = 585.0
+margin_top = 275.0
+margin_right = 654.0
+margin_bottom = 333.0
+size_flags_horizontal = 4
+text = "Play"
+
+[node name="Credits" type="Button" parent="UI/VBoxContainer"]
+margin_left = 566.0
+margin_top = 353.0
+margin_right = 673.0
+margin_bottom = 411.0
+size_flags_horizontal = 4
+text = "Credits"
+
+[node name="Info" type="Button" parent="UI/VBoxContainer"]
+margin_left = 582.0
+margin_top = 431.0
+margin_right = 657.0
+margin_bottom = 489.0
+size_flags_horizontal = 4
+text = "Info"
+
+[connection signal="pressed" from="UI/VBoxContainer/Play" to="." method="_on_play_pressed" flags=3]
