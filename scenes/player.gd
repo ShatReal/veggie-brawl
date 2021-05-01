@@ -1,14 +1,21 @@
-extends KinematicBody2D
+extends RigidBody2D
 
 
-const _SPEED := 200
+const _FORCE := 20
 
-var _velocity := Vector2()
+var _dir := Vector2()
 
 
 func _physics_process(_delta: float) -> void:
-	_velocity.x = Input.get_action_strength("right") - Input.get_action_strength("left")
-	_velocity.y = Input.get_action_strength("down") - Input.get_action_strength("up")
-	_velocity = _velocity.normalized()
-	_velocity = move_and_slide(_velocity * _SPEED)
+	_dir = Vector2.ZERO
+	if Input.is_action_just_pressed("right"):
+		_dir.x += 1
+	if Input.is_action_just_pressed("left"):
+		_dir.x -= 1
+	if Input.is_action_just_pressed("down"):
+		_dir.y += 1
+	if Input.is_action_just_pressed("up"):
+		_dir.y -= 1
+	_dir = _dir.normalized()
+	apply_central_impulse(_dir * _FORCE)
 	
