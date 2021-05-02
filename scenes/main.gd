@@ -6,6 +6,8 @@ const _Main_Menu := preload("res://scenes/main_menu.tscn")
 
 var _cur_scene:Node
 
+onready var _a_player := $AudioStreamPlayer
+
 
 func _ready() -> void:
 	randomize()
@@ -26,9 +28,12 @@ func _on_play_pressed() -> void:
 	_cur_scene.get_node("UI/GameOver/VBoxContainer/MainMenu").connect("pressed", self, "_on_main_menu_pressed", [], CONNECT_DEFERRED)
 # warning-ignore:return_value_discarded
 	_cur_scene.get_node("UI/GameOver/VBoxContainer/TryAgain").connect("pressed", self, "_on_play_pressed", [], CONNECT_DEFERRED)
+	if not _a_player.playing:
+		_a_player.play()
 
 
 func _on_main_menu_pressed() -> void:
+	_a_player.stop()
 	get_tree().paused = false
 	_cur_scene.free()
 	_cur_scene = _Main_Menu.instance()

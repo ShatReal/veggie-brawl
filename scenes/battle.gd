@@ -15,6 +15,8 @@ onready var _left = $UI/Left
 func _ready() -> void:
 # warning-ignore:return_value_discarded
 	_num_enemies = $Enemies.get_child_count()
+	for enemy in $Enemies.get_children():
+		enemy.player = _player
 	_left.text = _TEXT % _num_enemies
 
 
