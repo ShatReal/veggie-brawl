@@ -1,12 +1,12 @@
 extends Area2D
 
 
+const OFFSCREEN_X := 3000
+const OFFSCREEN_Y := -1500
 const _X_RANGE := 1800
 const _Y_RANGE := 600
 const _WAIT_RANGE := 5
 const _WAIT_OFFSET := 5
-const _OFFSCREEN_X := 3000
-const _OFFSCREEN_Y := -1500
 const _TIME := 3
 
 var _moving_down:bool
@@ -31,8 +31,8 @@ func _move_down() -> void:
 		scale.x = -1
 # warning-ignore:integer_division
 	y = randi() % _Y_RANGE - _Y_RANGE / 2
-	_tween.interpolate_property(self, "position:x", _OFFSCREEN_X * sign(x), x, _TIME)
-	_tween.interpolate_property(self, "position:y", _OFFSCREEN_Y, y, _TIME)
+	_tween.interpolate_property(self, "position:x", OFFSCREEN_X * sign(x), x, _TIME)
+	_tween.interpolate_property(self, "position:y", OFFSCREEN_Y, y, _TIME)
 	_tween.start()
 
 
@@ -57,6 +57,6 @@ func _on_timer_timeout() -> void:
 			add_child(battler)
 			battler.global_position = pos
 			battler.global_rotation = rot
-	_tween.interpolate_property(self, "position:x", x, _OFFSCREEN_X * sign(x), _TIME)
-	_tween.interpolate_property(self, "position:y", y, _OFFSCREEN_Y, _TIME)
+	_tween.interpolate_property(self, "position:x", x, OFFSCREEN_X * sign(x), _TIME)
+	_tween.interpolate_property(self, "position:y", y, OFFSCREEN_Y, _TIME)
 	_tween.start()

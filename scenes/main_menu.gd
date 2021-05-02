@@ -16,3 +16,7 @@ func _on_credits_pressed() -> void:
 
 func _on_more_info_pressed() -> void:
 	_m_pop.popup_centered()
+
+
+func _on_meta_clicked(meta) -> void:
+	OS.shell_open(meta)
