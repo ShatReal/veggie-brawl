@@ -4,14 +4,18 @@ extends Node
 const _Battle := preload("res://scenes/battle.tscn")
 const _Main_Menu := preload("res://scenes/main_menu.tscn")
 
-onready var _cur_scene := $MainMenu
-onready var _play := $MainMenu/MarginContainer/VBoxContainer/Play
+var _cur_scene:Node
 
 
 func _ready() -> void:
 	randomize()
-	_play.grab_focus()
-
+	_cur_scene = _Main_Menu.instance()
+	add_child(_cur_scene)
+	var play = $MainMenu/MarginContainer/VBoxContainer/Play
+# warning-ignore:return_value_discarded
+	play.connect("pressed", self, "_on_play_pressed", [], CONNECT_DEFERRED)
+	play.grab_focus()
+	
 
 func _on_play_pressed() -> void:
 	get_tree().paused = false
@@ -29,7 +33,7 @@ func _on_main_menu_pressed() -> void:
 	_cur_scene.free()
 	_cur_scene = _Main_Menu.instance()
 	add_child(_cur_scene)
-	_play = $MainMenu/MarginContainer/VBoxContainer/Play
+	var play = $MainMenu/MarginContainer/VBoxContainer/Play
 # warning-ignore:return_value_discarded
-	_play.connect("pressed", self, "_on_play_pressed", [], CONNECT_DEFERRED)
-	_play.grab_focus()
+	play.connect("pressed", self, "_on_play_pressed", [], CONNECT_DEFERRED)
+	play.grab_focus()

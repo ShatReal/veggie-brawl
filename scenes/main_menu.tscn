@@ -1,14 +1,28 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://theme/theme.tres" type="Theme" id=2]
 [ext_resource path="res://scenes/main_menu.gd" type="Script" id=3]
+[ext_resource path="res://sprites/bowl.jpg" type="Texture" id=4]
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 2 )
 script = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 6.10352e-05
+margin_top = -360.268
+margin_right = 640.0
+margin_bottom = -0.268494
+texture = ExtResource( 4 )
 __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
@@ -86,13 +100,39 @@ margin_left = 12.0
 margin_top = 12.0
 margin_right = -12.0
 margin_bottom = -12.0
-text = "Use WSAD or arrow keys to move!
-Don't get scooped up with the spoon and eaten!
+text = "Use the WASD or arrow keys to move!
+Don't get scooped up by the spoon and eaten!
 Last veggie standing wins!"
-align = 1
-valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="CPop" type="PopupPanel" parent="."]
+margin_right = 24.0
+margin_bottom = 24.0
+
+[node name="Label" type="Label" parent="CPop"]
+margin_left = 12.0
+margin_top = 12.0
+margin_right = 233.0
+margin_bottom = 120.0
+text = "Made with Godot
+Programming: Exuin
+Art: Albore"
+
+[node name="MPop" type="PopupPanel" parent="."]
+margin_right = 518.0
+margin_bottom = 132.0
+
+[node name="Label" type="Label" parent="MPop"]
+margin_left = 12.0
+margin_top = 12.0
+margin_right = 506.0
+margin_bottom = 120.0
+text = "Challenges used:
+Only use the default MS Paint color palette.
+Use only comic sans for any in-game font."
+
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Instructions" to="." method="_on_instructions_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MoreInfo" to="." method="_on_more_info_pressed"]
