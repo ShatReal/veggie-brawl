@@ -1,4 +1,4 @@
-extends StaticBody2D
+extends Area2D
 
 
 const _X_RANGE := 1800
@@ -13,10 +13,8 @@ var _moving_down:bool
 var x: int
 var y: int
 
-onready var _poly := $CollisionPolygon2D
 onready var _timer := $Timer
 onready var _tween := $Tween
-onready var _area := $Area2D
 
 
 func _ready() -> void:
@@ -25,7 +23,6 @@ func _ready() -> void:
 
 func _move_down() -> void:
 	_moving_down = true
-	_poly.disabled = true
 # warning-ignore:integer_division
 	x = randi() % _X_RANGE - _X_RANGE / 2
 	if x < 0:
@@ -48,9 +45,18 @@ func _on_tween_all_completed() -> void:
 
 func _on_timer_timeout() -> void:
 	_moving_down = false
-	_poly.disabled = false
-	for battler in _area.get_overlapping_bodies():
-		battler.set_collision_mask_bit(2, true)
+	for battler in get_overlapping_bodies():
+		if battler is RigidBody2D:
+			battler.mode = RigidBody2D.MODE_KINEMATIC
+			battler.set_collision_layer_bit(0, false)
+			battler.set_collision_layer_bit(1, true)
+			battler.set_collision_mask_bit(0, false)
+			var pos:Vector2 = battler.global_position
+			var rot:float = battler.global_rotation
+			battler.get_parent().remove_child(battler)
+			add_child(battler)
+			battler.global_position = pos
+			battler.global_rotation = rot
 	_tween.interpolate_property(self, "position:x", x, _OFFSCREEN_X * sign(x), _TIME)
 	_tween.interpolate_property(self, "position:y", y, _OFFSCREEN_Y, _TIME)
 	_tween.start()

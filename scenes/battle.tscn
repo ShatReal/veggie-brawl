@@ -1,15 +1,27 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scenes/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://sprites/bowl.jpg" type="Texture" id=2]
 [ext_resource path="res://scenes/enemy.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/spoon.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/kill_zone.tscn" type="PackedScene" id=5]
+[ext_resource path="res://theme/theme.tres" type="Theme" id=6]
+[ext_resource path="res://scenes/battle.gd" type="Script" id=7]
+[ext_resource path="res://theme/comic.ttf" type="DynamicFontData" id=8]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+outline_size = 4
+font_data = ExtResource( 8 )
 
 [node name="Battle" type="Node2D"]
+script = ExtResource( 7 )
 
 [node name="Bowl" type="Sprite" parent="."]
 texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Spoon" parent="." instance=ExtResource( 4 )]
 position = Vector2( -3000, -1500 )
@@ -22,43 +34,52 @@ position = Vector2( -3000, -1500 )
 position = Vector2( -287.262, -124.732 )
 
 [node name="Enemy2" parent="Enemies" instance=ExtResource( 3 )]
-position = Vector2( -2.51984, -133.552 )
+position = Vector2( 47.7828, -131.406 )
 
 [node name="Enemy3" parent="Enemies" instance=ExtResource( 3 )]
-position = Vector2( 215.447, -17.6389 )
+position = Vector2( 286.719, 42.123 )
 
 [node name="Enemy4" parent="Enemies" instance=ExtResource( 3 )]
-position = Vector2( -64.2559, 62.9961 )
+position = Vector2( 47.7828, 136.897 )
 
 [node name="Enemy5" parent="Enemies" instance=ExtResource( 3 )]
-position = Vector2( -330.099, 34.0179 )
+position = Vector2( -248.552, 67.485 )
 
 [node name="Enemy6" parent="Enemies" instance=ExtResource( 3 )]
-position = Vector2( 157.49, 210.407 )
+position = Vector2( -143.099, -164.777 )
 
 [node name="Enemy7" parent="Enemies" instance=ExtResource( 3 )]
-position = Vector2( 469.951, -37.7976 )
+position = Vector2( 170.588, -154.098 )
 
 [node name="Enemy8" parent="Enemies" instance=ExtResource( 3 )]
-position = Vector2( 125.992, -291.042 )
+position = Vector2( 356.131, -79.3474 )
 
 [node name="Enemy9" parent="Enemies" instance=ExtResource( 3 )]
-position = Vector2( -496.409, -118.433 )
+position = Vector2( 79.819, -263.555 )
 
 [node name="Enemy10" parent="Enemies" instance=ExtResource( 3 )]
-position = Vector2( -284.742, 204.107 )
+position = Vector2( 428.212, -232.854 )
 
 [node name="Enemy11" parent="Enemies" instance=ExtResource( 3 )]
-position = Vector2( -196.547, -296.081 )
+position = Vector2( 490.95, -0.591812 )
 
 [node name="Enemy12" parent="Enemies" instance=ExtResource( 3 )]
-position = Vector2( 328.84, -200.327 )
+position = Vector2( 358.801, 194.295 )
 
 [node name="Enemy13" parent="Enemies" instance=ExtResource( 3 )]
-position = Vector2( 350.258, 144.891 )
+position = Vector2( 178.597, 234.34 )
 
 [node name="Enemy14" parent="Enemies" instance=ExtResource( 3 )]
-position = Vector2( 614.842, -41.5774 )
+position = Vector2( -157.782, 234.34 )
+
+[node name="Enemy15" parent="Enemies" instance=ExtResource( 3 )]
+position = Vector2( -488.823, 15.4263 )
+
+[node name="Enemy16" parent="Enemies" instance=ExtResource( 3 )]
+position = Vector2( -486.153, -170.116 )
+
+[node name="Enemy17" parent="Enemies" instance=ExtResource( 3 )]
+position = Vector2( -332.647, -239.528 )
 
 [node name="Boundary" type="StaticBody2D" parent="."]
 
@@ -70,3 +91,62 @@ position = Vector2( -2449.29, -1547.18 )
 
 [node name="KillRight" parent="." instance=ExtResource( 5 )]
 position = Vector2( 2449.29, -1547.18 )
+
+[node name="UI" type="CanvasLayer" parent="."]
+pause_mode = 2
+
+[node name="GameOver" type="PopupPanel" parent="UI"]
+margin_right = 8.0
+margin_bottom = 8.0
+theme = ExtResource( 6 )
+popup_exclusive = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/GameOver"]
+margin_left = 12.0
+margin_top = 12.0
+margin_right = 162.0
+margin_bottom = 170.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="UI/GameOver/VBoxContainer"]
+margin_right = 150.0
+margin_bottom = 34.0
+text = "Game over!"
+align = 1
+
+[node name="TryAgain" type="Button" parent="UI/GameOver/VBoxContainer"]
+margin_top = 38.0
+margin_right = 150.0
+margin_bottom = 96.0
+text = "Try Again"
+
+[node name="MainMenu" type="Button" parent="UI/GameOver/VBoxContainer"]
+margin_top = 100.0
+margin_right = 150.0
+margin_bottom = 158.0
+text = "Main Menu "
+
+[node name="Left" type="Label" parent="UI"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -130.5
+margin_right = 130.5
+margin_bottom = 46.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.133333, 0.694118, 0.298039, 1 )
+custom_colors/font_outline_modulate = Color( 0.709804, 0.901961, 0.113725, 1 )
+text = "Enemies left: 00"
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[connection signal="enemy_killed" from="KillLeft" to="." method="_on_enemy_killed"]
+[connection signal="player_killed" from="KillLeft" to="." method="_on_player_killed"]
+[connection signal="enemy_killed" from="KillRight" to="." method="_on_enemy_killed"]
+[connection signal="player_killed" from="KillRight" to="." method="_on_player_killed"]

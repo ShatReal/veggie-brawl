@@ -1,7 +1,7 @@
 extends RigidBody2D
 
 
-const _FORCE := 20
+const _FORCE := 200
 
 var _dir := Vector2()
 
