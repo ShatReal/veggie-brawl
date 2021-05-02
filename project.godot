@@ -16,6 +16,7 @@ _global_script_class_icons={
 
 config/name="Veggie Brawl"
 run/main_scene="res://scenes/main.tscn"
+boot_splash/bg_color=Color( 0.133333, 0.694118, 0.298039, 1 )
 config/icon="res://icon.png"
 
 [display]
@@ -69,5 +70,6 @@ quality/driver/driver_name="GLES2"
 2d/snapping/use_gpu_pixel_snap=true
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
+environment/default_clear_color=Color( 0.133333, 0.694118, 0.298039, 1 )
 environment/default_environment="res://default_env.tres"
 quality/dynamic_fonts/use_oversampling=false

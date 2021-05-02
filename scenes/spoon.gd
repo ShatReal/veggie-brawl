@@ -8,6 +8,7 @@ const _Y_RANGE := 600
 const _WAIT_RANGE := 5
 const _WAIT_OFFSET := 5
 const _TIME := 3
+const _WEEEEE := preload("res://sounds/weeeee.mp3")
 
 var _moving_down:bool
 var x: int
@@ -57,6 +58,8 @@ func _on_timer_timeout() -> void:
 			add_child(battler)
 			battler.global_position = pos
 			battler.global_rotation = rot
+			battler.hit.stream = _WEEEEE
+			battler.hit.play()
 	_tween.interpolate_property(self, "position:x", x, OFFSCREEN_X * sign(x), _TIME)
 	_tween.interpolate_property(self, "position:y", y, OFFSCREEN_Y, _TIME)
 	_tween.start()

@@ -1,13 +1,14 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://sprites/bowl.jpg" type="Texture" id=2]
-[ext_resource path="res://scenes/enemy.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/enemies/enemy.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/spoon.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/kill_zone.tscn" type="PackedScene" id=5]
 [ext_resource path="res://theme/theme.tres" type="Theme" id=6]
 [ext_resource path="res://scenes/battle.gd" type="Script" id=7]
 [ext_resource path="res://theme/comic.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://sounds/victory.mp3" type="AudioStream" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -31,55 +32,79 @@ position = Vector2( -3000, -1500 )
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="Enemy" parent="Enemies" instance=ExtResource( 3 )]
-position = Vector2( -287.262, -124.732 )
+position = Vector2( -393.675, -271.446 )
 
 [node name="Enemy2" parent="Enemies" instance=ExtResource( 3 )]
-position = Vector2( 47.7828, -131.406 )
+position = Vector2( 249.222, -277.795 )
 
 [node name="Enemy3" parent="Enemies" instance=ExtResource( 3 )]
-position = Vector2( 286.719, 42.123 )
+position = Vector2( 273.033, -31.748 )
 
 [node name="Enemy4" parent="Enemies" instance=ExtResource( 3 )]
-position = Vector2( 47.7828, 136.897 )
+position = Vector2( 101.594, -155.565 )
 
 [node name="Enemy5" parent="Enemies" instance=ExtResource( 3 )]
-position = Vector2( -248.552, 67.485 )
+position = Vector2( -96.8314, -184.139 )
 
 [node name="Enemy6" parent="Enemies" instance=ExtResource( 3 )]
-position = Vector2( -143.099, -164.777 )
+position = Vector2( -228.586, -42.8598 )
 
 [node name="Enemy7" parent="Enemies" instance=ExtResource( 3 )]
-position = Vector2( 170.588, -154.098 )
+position = Vector2( -441.297, -74.6078 )
 
 [node name="Enemy8" parent="Enemies" instance=ExtResource( 3 )]
-position = Vector2( 356.131, -79.3474 )
+position = Vector2( -366.69, 114.293 )
 
 [node name="Enemy9" parent="Enemies" instance=ExtResource( 3 )]
-position = Vector2( 79.819, -263.555 )
+position = Vector2( -211.124, 180.964 )
 
 [node name="Enemy10" parent="Enemies" instance=ExtResource( 3 )]
-position = Vector2( 428.212, -232.854 )
+position = Vector2( 4.76215, 190.488 )
 
 [node name="Enemy11" parent="Enemies" instance=ExtResource( 3 )]
-position = Vector2( 490.95, -0.591812 )
+position = Vector2( 195.25, 185.726 )
 
 [node name="Enemy12" parent="Enemies" instance=ExtResource( 3 )]
-position = Vector2( 358.801, 194.295 )
+position = Vector2( 330.179, 114.293 )
 
 [node name="Enemy13" parent="Enemies" instance=ExtResource( 3 )]
-position = Vector2( 178.597, 234.34 )
+position = Vector2( 401.612, -31.748 )
 
 [node name="Enemy14" parent="Enemies" instance=ExtResource( 3 )]
-position = Vector2( -157.782, 234.34 )
+position = Vector2( 590.513, -93.6566 )
 
 [node name="Enemy15" parent="Enemies" instance=ExtResource( 3 )]
-position = Vector2( -488.823, 15.4263 )
+position = Vector2( 412.724, -153.978 )
 
 [node name="Enemy16" parent="Enemies" instance=ExtResource( 3 )]
-position = Vector2( -486.153, -170.116 )
+position = Vector2( -269.858, -225.411 )
 
 [node name="Enemy17" parent="Enemies" instance=ExtResource( 3 )]
-position = Vector2( -332.647, -239.528 )
+position = Vector2( -71.4332, -280.97 )
+
+[node name="Enemy18" parent="Enemies" instance=ExtResource( 3 )]
+position = Vector2( 122.23, -250.809 )
+
+[node name="Enemy19" parent="Enemies" instance=ExtResource( 3 )]
+position = Vector2( 166.677, 77.7827 )
+
+[node name="Enemy20" parent="Enemies" instance=ExtResource( 3 )]
+position = Vector2( -107.943, 82.5449 )
+
+[node name="Enemy21" parent="Enemies" instance=ExtResource( 3 )]
+position = Vector2( -414.312, 14.2867 )
+
+[node name="Enemy22" parent="Enemies" instance=ExtResource( 3 )]
+position = Vector2( -604.8, -4.76218 )
+
+[node name="Enemy23" parent="Enemies" instance=ExtResource( 3 )]
+position = Vector2( -333.354, -138.104 )
+
+[node name="Enemy24" parent="Enemies" instance=ExtResource( 3 )]
+position = Vector2( -541.304, -150.803 )
+
+[node name="Enemy25" parent="Enemies" instance=ExtResource( 3 )]
+position = Vector2( 114.293, 257.159 )
 
 [node name="Boundary" type="StaticBody2D" parent="."]
 
@@ -145,6 +170,11 @@ __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
 }
+
+[node name="Over" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+stream = ExtResource( 9 )
+volume_db = 10.0
 
 [connection signal="enemy_killed" from="KillLeft" to="." method="_on_enemy_killed"]
 [connection signal="player_killed" from="KillLeft" to="." method="_on_player_killed"]

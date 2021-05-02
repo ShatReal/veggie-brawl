@@ -3,13 +3,15 @@ extends Node2D
 
 const _Spoon := preload("res://scenes/spoon.tscn")
 const _TEXT := "Enemies left: %02d"
+const _DEFEAT := preload("res://sounds/defeat.mp3")
 
 var _num_enemies:int
 
 onready var _player := $Player
 onready var _game_over := $UI/GameOver
 onready var _label := $UI/GameOver/VBoxContainer/Label
-onready var _left = $UI/Left
+onready var _left := $UI/Left
+onready var _over := $Over
 
 
 func _ready() -> void:
@@ -23,6 +25,8 @@ func _ready() -> void:
 func _on_player_killed() -> void:
 	_game_over.popup_centered()
 	get_tree().paused = true
+	_over.stream = _DEFEAT
+	_over.play()
 
 
 func _on_enemy_killed() -> void:
@@ -35,6 +39,7 @@ func _on_enemy_killed() -> void:
 			_label.text = "You won!"
 			_game_over.popup_centered()
 			get_tree().paused = true
+			_over.play()
 
 func _add_new_spoon() -> void:
 	var spoon = _Spoon.instance()

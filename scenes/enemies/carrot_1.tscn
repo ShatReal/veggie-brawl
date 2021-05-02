@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://sprites/carrot_1.png" type="Texture" id=1]
+
+[node name="Carrot" type="Sprite"]
+scale = Vector2( 0.35, 0.35 )
+texture = ExtResource( 1 )

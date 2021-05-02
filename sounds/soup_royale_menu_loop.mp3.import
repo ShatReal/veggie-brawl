@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/soup_royale_menu_loop.mp3-7e0f22c1e70d831032e9269334d959bc.mp3str"
+
+[deps]
+
+source_file="res://sounds/soup_royale_menu_loop.mp3"
+dest_files=[ "res://.import/soup_royale_menu_loop.mp3-7e0f22c1e70d831032e9269334d959bc.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

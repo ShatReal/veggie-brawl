@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/spoon.png-f8e7371ebe402524d0d2e46f0eb99d1e.stex"
+path="res://.import/potato.png-98bfdad8144dc6a85a8cc9b65166a298.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/spoon.png"
-dest_files=[ "res://.import/spoon.png-f8e7371ebe402524d0d2e46f0eb99d1e.stex" ]
+source_file="res://sprites/potato.png"
+dest_files=[ "res://.import/potato.png-98bfdad8144dc6a85a8cc9b65166a298.stex" ]
 
 [params]
 
